@@ -4,10 +4,7 @@ import dev.lulu.backendlocadora.dto.ClienteDTO;
 import dev.lulu.backendlocadora.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,4 +24,22 @@ public class ClienteController {
     public ResponseEntity<ClienteDTO> buscarPorId(@PathVariable("id") Long id) {
         return ResponseEntity.ok(service.findById(id));
     }
+
+    @PostMapping
+    public ResponseEntity<String> save(ClienteDTO clienteDTO) {
+        Long id = service.save(clienteDTO);
+        return ResponseEntity.ok("Cliente salvo com sucesso!");
+    }
+
+    @DeleteMapping
+    public ResponseEntity<String> delete(Long id) {
+        service.delete(id);
+        return ResponseEntity.ok("Cliente deletado com sucesso!");
+    }
+    @PatchMapping
+    public ResponseEntity<String> update(ClienteDTO clienteDTO) {
+        Long id = service.save(clienteDTO);
+        return ResponseEntity.ok("Cliente atualizado com sucesso!");
+    }
+
 }

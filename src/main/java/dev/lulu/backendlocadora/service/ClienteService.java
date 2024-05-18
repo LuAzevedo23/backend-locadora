@@ -24,7 +24,7 @@ public class ClienteService {
     }
 
     public ClienteDTO findById(Long id) {
-        Cliente cliente= repository.findById(id).orElseThrow(
+        Cliente cliente = repository.findById(id).orElseThrow(
                 () -> new RuntimeException("Cliente com id" + id + "Não foi encontrado"));
         return mapper.paraDTO(cliente);
 
@@ -35,5 +35,19 @@ public class ClienteService {
         return repository.save(cliente).getId();
     }
 
-
+    public void delete(Long id) {
+        if (repository.existsById(id)) {
+            repository.deleteById(id);
+        } else {
+            throw new RuntimeException("Cliente com id" + id + "Não foi encontrado");
+        }
+    }
+    public Long update (ClienteDTO clienteDTO) {
+        Cliente cliente = mapper.paraEntity(clienteDTO);
+        if (repository.existsById(cliente.getId())) {
+           return repository.save(cliente).getId();
+        } else {
+            throw new RuntimeException("Cliente com id" + cliente.getId() + "Não foi encontrado");
+        }
+    }
 }

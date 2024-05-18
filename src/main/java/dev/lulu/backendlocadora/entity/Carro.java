@@ -18,6 +18,7 @@ public class Carro {
     private Boolean disponivel;
     @Column("id")
     private Fabricante fabricante;
+    @Column("id")
     private Modelo modelo;
 
 }
