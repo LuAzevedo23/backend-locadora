@@ -5,7 +5,7 @@ import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CarroRepository extends ListCrudRepository<Carro,String> {
+public interface CarroRepository extends ListCrudRepository<Carro, Long> {
 
     
 }

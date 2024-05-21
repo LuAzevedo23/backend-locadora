@@ -11,6 +11,7 @@ import org.springframework.data.relational.core.mapping.Column;
 @NoArgsConstructor
 public class Carro {
     @Id
+    private Long id;
     private String ano;
     private String cor;
     private String placa;
